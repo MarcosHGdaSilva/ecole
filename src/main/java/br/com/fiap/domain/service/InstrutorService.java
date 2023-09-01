@@ -1,28 +1,41 @@
 package br.com.fiap.domain.service;
 
 import br.com.fiap.domain.entity.Instrutor;
+import br.com.fiap.domain.entity.Turma;
+import br.com.fiap.domain.repository.InstrutorRepository;
+import br.com.fiap.domain.repository.TurmaRepository;
 import br.com.fiap.exception.MetodoNaoImplementadoException;
 
 import java.util.List;
+import java.util.Objects;
 
 public class InstrutorService implements Service<Instrutor, Long> {
+
+    private InstrutorRepository repository;
+
+    public InstrutorService(){
+        repository = new InstrutorRepository();
+    }
     @Override
     public List<Instrutor> findAll() {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        return repository.findAll();
     }
 
     @Override
     public Instrutor findById(Long id) {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        return repository.findById(id);
     }
 
     @Override
     public List<Instrutor> findByName(String texto) {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        return repository.findByName(texto);
     }
 
     @Override
     public Instrutor persist(Instrutor instrutor) {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        if (Objects.nonNull(instrutor)){
+            return repository.persist(instrutor);
+        }
+        return null;
     }
 }
